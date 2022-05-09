@@ -1,43 +1,52 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:book_store/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
 import '../../size_config.dart';
 import 'components/body.dart';
 
-
-
-class Home extends StatelessWidget {
-  const Home({Key? key}) : super(key: key);
+class Home extends StatefulWidget {
+  Home({Key? key}) : super(key: key);
 
   @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  var _currentIndex = 0;
+  @override
   Widget build(BuildContext context) {
-    SizeConfig.init(context);
     return Scaffold(
       body: Body(),
-      bottomNavigationBar: BottomNavigationBar(
-        elevation: 0,
-        items: <BottomNavigationBarItem> [
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset(
-              'assets/icons/home (1).svg',
-            ),
-            label: ''
+      bottomNavigationBar: SalomonBottomBar(
+        margin: EdgeInsets.all(20),
+        currentIndex: _currentIndex,
+        onTap: (i) => setState(() => _currentIndex = i),
+        items: [
+          SalomonBottomBarItem(
+            icon: SvgPicture.asset('assets/icons/home (1).svg'),
+            title: Text('Home'),
+            selectedColor: kSecondaryColor,
           ),
-          BottomNavigationBarItem(
+          SalomonBottomBarItem(
             icon: SvgPicture.asset('assets/icons/bookmark.svg'),
-            label: ''
+            title: Text('Bookmark'),
+            selectedColor: kSecondaryColor,
           ),
-          BottomNavigationBarItem(
+          SalomonBottomBarItem(
             icon: SvgPicture.asset('assets/icons/shopping-bag.svg'),
-            label: ''
+            title: Text('Cart'),
+            selectedColor: kSecondaryColor,
           ),
-          BottomNavigationBarItem(
+          SalomonBottomBarItem(
             icon: SvgPicture.asset('assets/icons/sliders.svg'),
-            label: ''
-          )
-
+            title: Text('Filter'),
+            selectedColor: kSecondaryColor,
+          ),
+         
         ]
       ),
     );

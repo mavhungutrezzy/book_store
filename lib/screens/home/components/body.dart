@@ -21,7 +21,7 @@ class Body extends StatelessWidget {
           padding: const EdgeInsets.only(
             left: 20,
             right: 20,
-            top: 68,
+            top: 20,
             bottom: 2,
           ),
 

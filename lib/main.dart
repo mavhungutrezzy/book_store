@@ -1,3 +1,6 @@
+// ignore_for_file: prefer_const_constructors
+
+import 'screens/book_detail/book_detail.dart';
 import 'screens/home/home.dart';
 
 import 'package:flutter/material.dart';
@@ -17,7 +20,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Home() ,
+      home: BookDetail(),
     );
   }
 }

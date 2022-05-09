@@ -18,10 +18,13 @@ class Body extends StatelessWidget {
       child: SizedBox(
         width: double.infinity,
         child: Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 22,
-            vertical: 68,
+          padding: const EdgeInsets.only(
+            left: 20,
+            right: 20,
+            top: 68,
+            bottom: 2,
           ),
+
           child: Column(
             children: [       
               Padding(
@@ -34,39 +37,66 @@ class Body extends StatelessWidget {
                   ],
                 ),
               ),
-      
-              Padding(
-                padding: EdgeInsets.only(bottom: 17.0),
-                child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    'Popular Now',
-                    style: GoogleFonts.bebasNeue(
-                      fontSize: 35,
-                    ),
-                  ),
-                ),
-              ),
 
               Expanded(
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: bookData.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return BookCard(
-                      imageUrl: bookData[index].imageUrl,
-                      title: bookData[index].title,
-                      author: bookData[index].author,
-                    );
-                  },
+                child: ListView(
+                  children: <Widget>[
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        'Popular Now',
+                        style: GoogleFonts.bebasNeue(
+                          fontSize: 35,
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 17.0,),
+
+                    SizedBox(
+                      height: 300,
+                      child: ListView.builder(
+                        padding: EdgeInsets.zero,
+                        scrollDirection: Axis.horizontal,
+                        itemCount: bookData.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          return BookCard(
+                            imageUrl: bookData[index].imageUrl,
+                            title: bookData[index].title,
+                            author: bookData[index].author,
+                          );
+                        },
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        'Bestsellers',
+                        style: GoogleFonts.bebasNeue(
+                          fontSize: 30,
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 16.0,),
+                    SizedBox(
+                      height: 300,
+                      child: ListView.builder(
+                        padding: EdgeInsets.zero,
+                        scrollDirection: Axis.horizontal,
+                        itemCount: bookData.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          return BookCard(
+                            imageUrl: bookData[index].imageUrl,
+                            title: bookData[index].title,
+                            author: bookData[index].author,
+                          );
+                        },
+                      ),
+                    ),
+                  ],
                 ),
-              ),
-
-            
-
-
+              )
             ],
-          ),
+          )
         )
       )
     );

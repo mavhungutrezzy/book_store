@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 
+import '../../../constants.dart';
 import '../../../size_config.dart';
 
 
@@ -25,6 +26,7 @@ class BookCard extends StatelessWidget {
       child: Container(
         padding: EdgeInsets.only(right: 16),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Image.asset(
               imageUrl,
@@ -32,16 +34,19 @@ class BookCard extends StatelessWidget {
               width: 142,
             ),
             SizedBox(height: 17.0),
-            Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
+            Text(
                 title,
-              ),
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18,
+                ),
             ),
             SizedBox(height: 5.0,),
             Text(
               author,
-              textAlign: TextAlign.left,
+              style: TextStyle(
+                color: kSecondaryTextColor,
+              ),
             ),
           ],
         )

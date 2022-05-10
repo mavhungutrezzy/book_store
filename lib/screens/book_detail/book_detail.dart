@@ -5,6 +5,9 @@ import 'package:flutter/material.dart';
 
 
 class BookDetail extends StatelessWidget {
+
+  static String routeName = 'more_details';
+    
   const BookDetail({Key? key}) : super(key: key);
 
   @override

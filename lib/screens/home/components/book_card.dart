@@ -1,9 +1,10 @@
 // ignore_for_file: must_be_immutable, prefer_const_constructors
 
+import 'package:book_store/screens/book_detail/book_detail.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../constants.dart';
-import '../../../size_config.dart';
 
 
 class BookCard extends StatelessWidget {
@@ -21,35 +22,39 @@ class BookCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    SizeConfig.init(context);
-    return SizedBox(
-      child: Container(
-        padding: EdgeInsets.only(right: 16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Image.asset(
-              imageUrl,
-              height: 192,
-              width: 142,
-            ),
-            SizedBox(height: 17.0),
-            Text(
-                title,
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 18,
-                ),
-            ),
-            SizedBox(height: 5.0,),
-            Text(
-              author,
-              style: TextStyle(
-                color: kSecondaryTextColor,
+    return GestureDetector(
+      onTap: () {
+        Navigator.pushNamed(context, BookDetail.routeName);
+      },
+      child: SizedBox(
+        child: Container(
+          padding: EdgeInsets.only(right: 16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Image.asset(
+                imageUrl,
+                height: 192.h,
+                width: 142.w,
               ),
-            ),
-          ],
-        )
+              SizedBox(height: 17.0.h),
+              Text(
+                  title,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18.sp,
+                  ),
+              ),
+              SizedBox(height: 5.0.h,),
+              Text(
+                author,
+                style: TextStyle(
+                  color: kSecondaryTextColor,
+                ),
+              ),
+            ],
+          )
+        ),
       ),
     );
   }
